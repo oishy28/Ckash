@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Electricity Payment</title>
+</head>
+<body>
+  <h2>Electricity Bill Payment</h2>
+  <input id="serialInput" placeholder="Enter meter serial" />
+  <button onclick="checkMeter()">Validate</button>
+  <div id="info"></div>
+
+  <script>
+    async function checkMeter() {
+      const serial = document.getElementById('serialInput').value;
+      const res = await fetch('http://localhost:3000/validate-meter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ serial })
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        document.getElementById('info').innerText = data.error;
+        return;
+      }
+
+      const meter = data.meter;
+      document.getElementById('info').innerHTML = `
+        <p>Owner: ${meter.owner}</p>
+        <p>Due: ${meter.due} Taka</p>
+        <button onclick="makePayment('${meter.serial}')">Pay Now</button>
+      `;
+    }
+
+    async function makePayment(serial) {
+      const res = await fetch('http://localhost:3000/make-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ serial })
+      });
+      const data = await res.json();
+      document.getElementById('info').innerText = data.message || data.error;
+    }
+  </script>
+</body>
+</html>

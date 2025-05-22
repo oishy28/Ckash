@@ -1,0 +1,4 @@
+[
+  { "serial": "12345", "owner": "Rahim", "due": 500 },
+  { "serial": "67890", "owner": "Karim", "due": 1000 }
+]

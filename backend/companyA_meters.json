@@ -1,0 +1,12 @@
+[
+  {
+    "serial": "A12345",
+    "owner": "Shoumik",
+    "due": 0
+  },
+  {
+    "serial": "A67890",
+    "owner": "Tania",
+    "due": 800
+  }
+]
