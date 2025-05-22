@@ -2,11 +2,13 @@
   {
     "serial": "A12345",
     "owner": "Shoumik",
+    "ownerId": "u001",
     "due": 0
   },
   {
     "serial": "A67890",
     "owner": "Tania",
+    "ownerId": "u002",
     "due": 800
   }
 ]
