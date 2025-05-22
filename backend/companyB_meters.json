@@ -1,4 +1,14 @@
 [
-  { "serial": "12345", "owner": "Rahim", "ownerId": "u003", "due": 500 },
-  { "serial": "67890", "owner": "Karim", "ownerId": "u004", "due": 1000 }
+  {
+    "serial": "12345",
+    "owner": "Rahim",
+    "ownerId": "u003",
+    "due": 3000
+  },
+  {
+    "serial": "67890",
+    "owner": "Karim",
+    "ownerId": "u004",
+    "due": 1000
+  }
 ]

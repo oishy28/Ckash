@@ -111,6 +111,9 @@ app.post('/make-payment', (req, res) => {
   res.json({ message: 'Payment successful', transaction });
 });
 
+module.exports = app;
+
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
