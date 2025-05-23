@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 });
 
-// 🔍 Find meter by serial
 function findMeter(serial) {
   try {
     if (serial.startsWith('A')) {
@@ -36,7 +35,6 @@ function findMeter(serial) {
   }
 }
 
-// 💾 Update meter due to 0
 function updateMeter(serial) {
   if (serial.startsWith('A')) {
     const meters = JSON.parse(fs.readFileSync(path.join(__dirname, 'companyA_meters.json')));
@@ -55,7 +53,6 @@ function updateMeter(serial) {
   }
 }
 
-// 💳 Get and update Bank
 function getBankData() {
   return JSON.parse(fs.readFileSync(path.join(__dirname, 'Bank.json')));
 }
@@ -69,14 +66,13 @@ function updateBank(ownerId, amount) {
   }
 }
 
-// ✅ Validate meter serial
 app.post('/validate-meter', (req, res) => {
   try {
     const { serial } = req.body;
-    console.log('🧪 Received serial:', serial);
+    console.log(' Received serial:', serial);
 
     const meter = findMeter(serial);
-    console.log('🔍 Found meter:', meter);
+    console.log(' Found meter:', meter);
 
     if (!meter) return res.status(404).json({ error: 'Meter not found' });
 
@@ -87,7 +83,6 @@ app.post('/validate-meter', (req, res) => {
   }
 });
 
-// 💸 Process payment
 app.post('/make-payment', (req, res) => {
   try {
     const { serial } = req.body;
@@ -129,7 +124,6 @@ app.post('/make-payment', (req, res) => {
   }
 });
 
-// 👇 Only start server if not in test mode
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`🚀 Server running at http://localhost:${PORT}`);
