@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 });
 
-function findMeter(serial) {
+function findMeter(serial) { //Desco Functionality
   try {
     if (serial.startsWith('A')) {
       const metersA = JSON.parse(fs.readFileSync(path.join(__dirname, 'companyA_meters.json')));
